@@ -1,0 +1,158 @@
+#title{
+background-color: #ebf5ee;
+}
+
+body{
+  font-family: 'Playfair Display', serif;
+  margin: 0px;
+
+}
+
+h1{
+  font-family: 'Stint Ultra Condensed', cursive;
+  font-size: 3.5rem;
+  line-height: 1.5;
+  margin: auto;
+  margin-top: 35px;
+  text-align: center;
+  padding-bottom: 40px;
+
+}
+
+.carousel {
+  width:400px;
+  height:400px;
+  text-align: center;
+  margin: auto;
+}
+
+.nav-item{
+  padding: 0 18px;
+}
+
+.title-image{
+  border-radius: 140px;
+  display: block;
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: auto;
+  z-index: 1;
+
+}
+
+.icon{
+  color: black;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.fas{
+  color: #921224;
+}
+.fas:hover{
+  color: #bdc6b8;
+}
+.col-lg-4{
+  margin: auto;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+#testimonials{
+  padding: 7% 15%;
+  text-align: center;
+  background-color: #ebf5ee;
+}
+
+.carousel-item{
+
+}
+#press{
+  text-align: center;
+  background-color: #ebf5ee;
+  padding: 4% 0;
+
+}
+
+.cloud-image{
+  margin: 0px;
+  position: absolute;
+  left: 85px;
+}
+
+.cloud-image1{
+  margin: 0px;
+  position: absolute;
+  right: 85px;
+}
+
+.cloud-image2{
+  margin: 0px;
+  position: absolute;
+  top: 1200px;
+  right: 355px;
+}
+
+ .cloud-image3{
+  margin: 0px;
+  position: absolute;
+  top: 1400px;
+  left: 220px;
+}
+
+.cloud-image4{
+  margin: 0px;
+  position: absolute;
+  right: 750px;
+  top: 1550px;
+}
+
+#footer{
+  background-color: #921224;
+
+}
+
+#press{
+  padding-bottom: 80px;
+  padding-top: 80px;
+}
+.footerPar{
+  margin-bottom: 0px;
+  padding: 13px;
+  color: white;
+  text-align: center;
+}
+.press-logo{
+  width: 15%;
+  margin: 20px 20px 50px;
+}
+
+.container-fluid{
+  padding: 40px 90px;
+}
+.btn{
+  margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  border-color: #bdc6b8;
+
+}
+
+.btn:hover {
+  background-color: #bdc6b8;
+  border-color: #bdc6b8
+}
+
+.centered {
+    padding-top: 200px;
+    text-align: center;
+}
+
+.secret-text {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  background-color: #000;
+}
