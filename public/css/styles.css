@@ -137,12 +137,17 @@ h1{
   margin-right: auto;
   color: black;
   border-color: #bdc6b8;
+  background-color: #ebf5ee;
 
+}
+.btn-block{
+  margin-top: 0px;
 }
 
 .btn:hover {
   background-color: #bdc6b8;
-  border-color: #bdc6b8
+  border-color: #bdc6b8;
+  color: white;
 }
 
 .centered {
