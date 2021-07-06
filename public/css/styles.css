@@ -161,3 +161,7 @@ h1{
   color: #fff;
   background-color: #000;
 }
+
+.btn-outline-danger{
+  width: 25%
+}
