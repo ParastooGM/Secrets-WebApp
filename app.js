@@ -54,7 +54,6 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/secrets",
     passReqToCallback   : true,
-    userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(request, accessToken, refreshToken, profile, done) {
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
@@ -79,10 +78,11 @@ app.get("/", function(req, res){
   res.render("home");
 });
 
-app.get("/auth/google", function(req, res){
-  passport.authenticate("google", { scope:
-      [ 'profile' ] });
-});
+app.get("/auth/google",
+    passport.authenticate('google', {
+        scope: ["profile"]
+    })
+);
 
 app.get( '/auth/google/secrets',
     passport.authenticate( 'google', {
@@ -90,11 +90,11 @@ app.get( '/auth/google/secrets',
         failureRedirect: '/login'
 }));
 
-app.get("/auth/facebook", function(req, res){
-    passport.authenticate("facebook", { scope:
-        [ 'public_profile' ] });
-  });
-
+  app.get("/auth/facebook",
+      passport.authenticate('facebook', {
+          scope: ["public_profile"]
+      })
+  );
 app.get('/auth/facebook/secrets',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
