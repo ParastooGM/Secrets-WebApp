@@ -168,7 +168,9 @@ h1{
 
 .secret-text {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: #000;
   background-color: #bdc6b8;
+  width: 65%;
+  margin: 20px auto 40px auto;
 }
