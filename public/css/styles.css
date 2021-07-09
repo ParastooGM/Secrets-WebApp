@@ -5,7 +5,6 @@ background-color: #ebf5ee;
 body{
   font-family: 'Playfair Display', serif;
   margin: 0px;
-
 }
 
 h1{
@@ -111,6 +110,9 @@ h1{
   background-color: #921224;
 
 }
+.btn{
+  text-align: center;
+}
 
 #press{
   padding-bottom: 80px;
@@ -130,7 +132,7 @@ h1{
 .container-fluid{
   padding: 40px 90px;
 }
-.btn{
+.stylebtn{
   margin-top: 30px;
   display: block;
   margin-left: auto;
@@ -144,7 +146,7 @@ h1{
   margin-top: 0px;
 }
 
-.btn:hover {
+.stylebtn:hover {
   background-color: #bdc6b8;
   border-color: #bdc6b8;
   color: white;
@@ -155,11 +157,9 @@ h1{
     text-align: center;
 }
 
-.secret-text {
-  text-align: center;
-  font-size: 2rem;
-  color: #fff;
-  background-color: #000;
+.logo{
+  color: #bdc6b8;
+  font-size: 4rem;
 }
 
 .btn-outline-danger{
