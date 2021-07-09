@@ -165,3 +165,10 @@ h1{
 .btn-outline-danger{
   width: 25%
 }
+
+.secret-text {
+  text-align: center;
+  font-size: 2rem;
+  color: #000;
+  background-color: #bdc6b8;
+}
