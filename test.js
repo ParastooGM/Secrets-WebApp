@@ -11,7 +11,6 @@ const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 const FacebookStrategy = require( 'passport-facebook' ).Strategy;
 const findOrCreate = require("mongoose-findorcreate");
 const flash = require('connect-flash');
-
 const app = express();
 
 app.use(express.static("public"));
@@ -88,7 +87,8 @@ app.get("/auth/google",
 app.get( '/auth/google/secrets',
     passport.authenticate( 'google', {
         successRedirect: '/secrets',
-        failureRedirect: '/login'
+        failureRedirect: '/login',
+
 }));
 
   app.get("/auth/facebook",
@@ -103,13 +103,15 @@ app.get('/auth/facebook/secrets',
     res.redirect('/secrets');
   });
 
-  app.get("/login", function(req, res){
-    res.render("login", {message : req.flash('error')});
-  });
-  app.get('/login/flash', function(req, res){
-    req.flash('error', 'Invalid Email Address or Password. Try Agin!')
-    res.redirect('/login');
-  });
+app.get("/login", function(req, res){
+  res.render("login", {message : req.flash('error')});
+});
+app.get('/flash', function(req, res){
+  console.log("here");
+  req.flash('error', 'Email and password do not match!');
+  res.redirect('/login');
+});
+
 app.get("/register", function(req, res){
   res.render("register");
 });
@@ -153,11 +155,13 @@ app.post("/login", function(req, res){
     if (err) {
       console.log(err);
     }else{
-      passport.authenticate("local" , { failureRedirect: '/login/flash' })(req, res, function(){
-        res.redirect("/secrets");
-      });
-    };
-  })
+      passport.authenticate("local"),
+      function(request, result) {
+        console.log("got in");
+        result.redirect('/secrets');
+      };
+    }
+});
 });
 
 app.post("/register", function(req, res){
