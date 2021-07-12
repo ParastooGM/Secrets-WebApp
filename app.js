@@ -88,7 +88,7 @@ app.get("/auth/google",
 app.get( '/auth/google/secrets',
     passport.authenticate( 'google', {
         successRedirect: '/secrets',
-        failureRedirect: '/login'
+        failureRedirect: '/login/flash'
 }));
 
   app.get("/auth/facebook",
@@ -97,7 +97,7 @@ app.get( '/auth/google/secrets',
       })
   );
 app.get('/auth/facebook/secrets',
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  passport.authenticate('facebook', { failureRedirect: '/login/flash' }),
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/secrets');
