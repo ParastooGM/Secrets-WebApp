@@ -41,6 +41,7 @@ userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
 
+//creating local user strategy
 passport.use(User.createStrategy());
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -50,6 +51,8 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
+
+//creating google strategy
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
@@ -62,6 +65,8 @@ passport.use(new GoogleStrategy({
     });
   }
 ));
+
+//creating facebook strategy
 passport.use(new FacebookStrategy({
     clientID: process.env.APP_ID,
     clientSecret: process.env.APP_SECRET,
@@ -75,10 +80,12 @@ passport.use(new FacebookStrategy({
 ));
 
 
+//routes
 app.get("/", function(req, res){
   res.render("home");
 });
 
+//google OAuth
 app.get("/auth/google",
     passport.authenticate('google', {
         scope: ["profile"]
@@ -91,6 +98,7 @@ app.get( '/auth/google/secrets',
         failureRedirect: '/login/flash'
 }));
 
+//facebook OAuth
   app.get("/auth/facebook",
       passport.authenticate('facebook', {
           scope: ["public_profile"]
@@ -99,22 +107,26 @@ app.get( '/auth/google/secrets',
 app.get('/auth/facebook/secrets',
   passport.authenticate('facebook', { failureRedirect: '/login/flash' }),
   function(req, res) {
-    // Successful authentication, redirect home.
+    // Successful authentication
     res.redirect('/secrets');
   });
 
   app.get("/login", function(req, res){
     res.render("login", {message : req.flash('error')});
   });
+
+//handelling unothorized requests.
   app.get('/login/flash', function(req, res){
     req.flash('error', 'Invalid Email Address or Password. Try Agin!')
     res.redirect('/login');
   });
+
 app.get("/register", function(req, res){
   res.render("register");
 });
 
 app.get("/secrets" , function(req, res){
+  //only allowed to see secrets if authenticated.
   if (req.isAuthenticated()){
     User.find({"secret" : {$ne: null}}, function(err, foundUsers){
       if (err){
@@ -122,8 +134,7 @@ app.get("/secrets" , function(req, res){
       } else {
         if (foundUsers) {
           res.render("secrets" , {usersWithSecrets : foundUsers});
-        }
-      };
+        }};
     });
   }else{
     res.redirect("/login");
@@ -136,6 +147,7 @@ app.get("/logout", function(req, res){
 });
 
 app.get("/submit", function(req, res){
+  //only allowed to submit secrets if authenticated.
   if (req.isAuthenticated()){
     res.render("submit");
   }else{
@@ -153,6 +165,7 @@ app.post("/login", function(req, res){
     if (err) {
       console.log(err);
     }else{
+      //local authentication
       passport.authenticate("local" , { failureRedirect: '/login/flash' })(req, res, function(){
         res.redirect("/secrets");
       });
@@ -166,6 +179,7 @@ app.post("/register", function(req, res){
       console.log(err);
       res.redirect("/register");
     }else{
+      //local authentication
       passport.authenticate("local")(req, res, function(){
         res.redirect("/secrets");
       })
@@ -189,4 +203,5 @@ app.post("/submit" , function(req, res){
   });
 });
 
+//hosted locally
 app.listen(3000);

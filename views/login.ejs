@@ -8,9 +8,11 @@
       <div class="card">
         <div class="card-body">
 
+          <!-- showing flash messages if any -->
           <% if (message) { %>
           <p><%= message %></p>
           <% } %>
+
           <!-- Makes POST request to /login route -->
           <form action="/login" method="POST">
             <div class="form-group">
