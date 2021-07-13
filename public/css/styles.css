@@ -73,38 +73,26 @@ h1{
 
 }
 
-.cloud-image{
-  margin: 0px;
-  position: absolute;
-  left: 85px;
+.right1{
+  text-align: right;
+  width: 20%;
+
+}
+.right2{
+  text-align: right;
+  width: 85%;
+
+}
+.right3{
+  text-align: right;
+  width: 95%;
 }
 
-.cloud-image1{
-  margin: 0px;
-  position: absolute;
-  right: 85px;
+.right4{
+  text-align: right;
+  width: 10%;
 }
 
-.cloud-image2{
-  margin: 0px;
-  position: absolute;
-  top: 1200px;
-  right: 355px;
-}
-
- .cloud-image3{
-  margin: 0px;
-  position: absolute;
-  top: 1400px;
-  left: 220px;
-}
-
-.cloud-image4{
-  margin: 0px;
-  position: absolute;
-  right: 750px;
-  top: 1550px;
-}
 
 #footer{
   background-color: #921224;
@@ -112,6 +100,7 @@ h1{
 }
 .btn{
   text-align: center;
+  width: fit-content;
 }
 
 #press{
@@ -163,12 +152,22 @@ h1{
 }
 
 .btn-outline-danger{
-  width: 25%
+  width: fit-content;
 }
 
+.secrets-page{
+  padding:4% 1%;
+  margin:2% auto;
+  width:65%;
+}
+
+.submit-style{
+   padding:7% 3%;
+   margin:5% 0px;
+}
 .secret-text {
   text-align: center;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   color: #000;
   background-color: #bdc6b8;
   width: 65%;
