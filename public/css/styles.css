@@ -103,6 +103,10 @@ h1{
   width: fit-content;
 }
 
+.btn-scl{
+  width: 100%; 
+}
+
 #press{
   padding-bottom: 80px;
   padding-top: 80px;
