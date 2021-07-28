@@ -28,6 +28,7 @@ app.use(flash());
 mongoose.connect("mongodb+srv://admin_parastoo:" + process.env.MDB_PASSWORD + "@cluster0.jlz7r.mongodb.net/userDB?retryWrites=true&w=majority", {useNewUrlParser: true ,  useUnifiedTopology: true });
 mongoose.set("useCreateIndex", true);
 const userSchema = new mongoose.Schema({
+  username: { type: String, unique: true },
   email: String,
   password: String,
   googleID: String,
@@ -36,7 +37,9 @@ const userSchema = new mongoose.Schema({
 });
 
 //hashing and salting with passport
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose, {
+  usernameField: "username"
+});;
 userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
@@ -60,7 +63,7 @@ passport.use(new GoogleStrategy({
     passReqToCallback   : true,
   },
   function(request, accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    User.findOrCreate({ googleId: profile.id ,  username: profile.id}, function (err, user) {
       return done(err, user);
     });
   }
@@ -73,7 +76,7 @@ passport.use(new FacebookStrategy({
     callbackURL: "https://boiling-ravine-51903.herokuapp.com/auth/facebook/secrets"
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    User.findOrCreate({ facebookId: profile.id ,  username: profile.id }, function (err, user) {
       return cb(err, user);
     });
   }
