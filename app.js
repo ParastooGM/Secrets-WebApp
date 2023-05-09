@@ -2,15 +2,13 @@ require("dotenv").config();
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const ejs = require("ejs");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
-const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
-const findOrCreate = require("mongoose-findorcreate");
 const flash = require("connect-flash");
+const User = require("./models/User");
 
 const app = express();
 
@@ -31,23 +29,8 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 mongoose.set("useCreateIndex", true);
-const userSchema = new mongoose.Schema({
-  username: { type: String, unique: true },
-  email: String,
-  password: String,
-  googleID: String,
-  facebookID: String,
-  secret: String,
-});
-
-//hashing and salting with passport
-userSchema.plugin(passportLocalMongoose, {
-  usernameField: "username",
-});
-userSchema.plugin(findOrCreate);
-
-const User = new mongoose.model("User", userSchema);
 
 //creating local user strategy
 passport.use(User.createStrategy());
@@ -237,8 +220,7 @@ app.post("/submit", function (req, res) {
   });
 });
 
-app.listen(3000, function () {
-  console.log("server started...");
-});
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log("server started"));
 
 module.exports = app;
