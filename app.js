@@ -123,14 +123,19 @@ app.get("/login", function (req, res) {
   res.render("login", { message: req.flash("error") });
 });
 
+app.get("/register", function (req, res) {
+  res.render("register", { message: req.flash("error_reg") });
+});
+
 //handelling unothorized requests.
 app.get("/login/flash", function (req, res) {
   req.flash("error", "Invalid Email Address or Password. Try Agin!");
   res.redirect("/login");
 });
 
-app.get("/register", function (req, res) {
-  res.render("register");
+app.get("/register/flash", function (req, res) {
+  req.flash("error_reg", "Email already exists. Try Agin!");
+  res.redirect("/register");
 });
 
 app.get("/secrets", function (req, res) {
@@ -187,21 +192,26 @@ app.post("/login", function (req, res) {
 });
 
 app.post("/register", function (req, res) {
-  User.register(
-    { username: req.body.username },
-    req.body.password,
-    function (err, user) {
-      if (err) {
-        console.log(err);
-        res.redirect("/register");
-      } else {
-        //local authentication
-        passport.authenticate("local")(req, res, function () {
-          res.redirect("/secrets");
-        });
+  if (User.find({ email: req.body.username })) {
+    res.redirect("/register/flash");
+  } else {
+    User.register(
+      { username: req.body.username },
+      req.body.password,
+      function (err, user) {
+        if (err) {
+          console.log(err);
+        } else {
+          //local authentication
+          passport.authenticate("local", {
+            failureRedirect: "/register/flash",
+          })(req, res, function () {
+            res.redirect("/secrets");
+          });
+        }
       }
-    }
-  );
+    );
+  }
 });
 
 app.post("/submit", function (req, res) {
