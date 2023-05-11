@@ -2,18 +2,31 @@
 
 <div class="container">
   <div class="jumbotron centered submit-style">
-    <img class="title-image" src="images/shhh.jpg"  height="15%" width="25%" style="text-align: center; margin:auto auto 30px auto">
-    <h1 >Don't keep your secrets, share them anonymously!</h1>
+    <img
+      class="title-image"
+      src="images/shhh.jpg"
+      height="15%"
+      width="25%"
+      style="text-align: center; margin: auto auto 30px auto"
+    />
+    <h1>Don't keep your secrets, share them anonymously!</h1>
 
     <form action="/submit" method="POST">
-
       <div class="form-group">
-        <input type="text" class="form-control text-center" name="secret" placeholder="What's your secret?">
+        <input
+          type="text"
+          class="form-control text-center"
+          name="secret"
+          style="
+            padding: 1.375rem 0.75rem;
+            margin: 0px auto 20px auto;
+            width: 70%;
+          "
+          placeholder="What's your secret?"
+        />
       </div>
       <button type="submit" class="btn btn-dark">Submit</button>
     </form>
-
-
   </div>
 </div>
 <%- include('partials/footer') %>

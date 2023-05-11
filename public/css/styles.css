@@ -1,131 +1,123 @@
-#title{
-background-color: #ebf5ee;
+#title {
+  background-color: #ebf5ee;
 }
 
-body{
-  font-family: 'Playfair Display', serif;
+body {
+  font-family: "Playfair Display", serif;
   margin: 0px;
 }
 
-h1{
-  font-family: 'Stint Ultra Condensed', cursive;
+h1 {
+  font-family: "Stint Ultra Condensed", cursive;
   font-size: 3.5rem;
   line-height: 1.5;
   margin: auto;
   margin-top: 35px;
   text-align: center;
   padding-bottom: 40px;
-
 }
 
 .carousel {
-  width:400px;
-  height:400px;
+  width: 400px;
+  height: 400px;
   text-align: center;
   margin: auto;
 }
 
-.nav-item{
+.nav-item {
   padding: 0 18px;
 }
 
-.title-image{
+.title-image {
   border-radius: 140px;
   display: block;
   margin-top: 50px;
   margin-left: 100px;
   margin-right: auto;
   z-index: 1;
-
 }
 
-.icon{
+.icon {
   color: black;
   font-size: 3rem;
   font-weight: bold;
 }
 
-.fas{
+.fas {
   color: #921224;
 }
-.fas:hover{
+.fas:hover {
   color: #bdc6b8;
 }
-.col-lg-4{
+.col-lg-4 {
   margin: auto;
   text-align: center;
   font-size: 0.8rem;
 }
 
-#testimonials{
+#testimonials {
   padding: 7% 15%;
   text-align: center;
   background-color: #ebf5ee;
 }
 
-.carousel-item{
-
+.carousel-item {
 }
-#press{
+#press {
   text-align: center;
   background-color: #ebf5ee;
   padding: 4% 0;
-
 }
 
-.right1{
+.right1 {
   text-align: right;
   width: 20%;
-
 }
-.right2{
+.right2 {
   text-align: right;
   width: 85%;
-
 }
-.right3{
+.right3 {
   text-align: right;
   width: 95%;
 }
 
-.right4{
+.right4 {
   text-align: right;
   width: 10%;
 }
 
-
-#footer{
+#footer {
   background-color: #921224;
-
 }
-.btn{
+.btn {
   text-align: center;
   width: fit-content;
 }
 
-.btn-scl{
-  width: 100%; 
+.btn-scl {
+  width: 100%;
 }
 
-#press{
+#press {
   padding-bottom: 80px;
   padding-top: 80px;
 }
-.footerPar{
+.footerPar {
   margin-bottom: 0px;
   padding: 13px;
   color: white;
   text-align: center;
 }
-.press-logo{
+.press-logo {
   width: 15%;
   margin: 20px 20px 50px;
 }
 
-.container-fluid{
+.container-fluid {
   padding: 40px 90px;
 }
-.stylebtn{
+.stylebtn {
   margin-top: 30px;
   display: block;
   margin-left: auto;
@@ -133,9 +125,8 @@ h1{
   color: black;
   border-color: #bdc6b8;
   background-color: #ebf5ee;
-
 }
-.btn-block{
+.btn-block {
   margin-top: 0px;
 }
 
@@ -146,34 +137,35 @@ h1{
 }
 
 .centered {
-    padding-top: 200px;
-    text-align: center;
+  padding-top: 200px;
+  text-align: center;
 }
 
-.logo{
+.logo {
   color: #bdc6b8;
   font-size: 4rem;
 }
 
-.btn-outline-danger{
+.btn-outline-danger {
   width: fit-content;
 }
 
-.secrets-page{
-  padding:4% 1%;
-  margin:2% auto;
-  width:65%;
+.secrets-page {
+  padding: 4% 1%;
+  margin: 8% auto;
+  width: 65%;
 }
 
-.submit-style{
-   padding:7% 3%;
-   margin:5% 0px;
+.submit-style {
+  padding: 7% 3%;
+  margin: 5% 0px;
 }
 .secret-text {
   text-align: center;
   font-size: 1.5rem;
   color: #000;
-  background-color: #bdc6b8;
+  background-color: #d0d5cd;
   width: 65%;
   margin: 20px auto 40px auto;
+  padding: 3%;
 }
