@@ -53,11 +53,13 @@ passport.use(
       passReqToCallback: true,
     },
     function (request, accessToken, refreshToken, profile, done) {
-      User.findOrCreate(
-        { googleId: profile.id, username: profile.id },
-        function (err, user) {
-          return done(err, user);
-        }
+      User.deleteOne({ username: profile.displayName }).then(() =>
+        User.findOrCreate(
+          { googleId: profile.id, username: profile.displayName },
+          function (err, user) {
+            return done(err, user);
+          }
+        )
       );
     }
   )
@@ -72,11 +74,13 @@ passport.use(
       callbackURL: "http://localhost:3000/auth/facebook/secrets",
     },
     function (accessToken, refreshToken, profile, cb) {
-      User.findOrCreate(
-        { facebookId: profile.id, username: profile.id },
-        function (err, user) {
-          return cb(err, user);
-        }
+      User.deleteOne({ username: profile.displayName }).then(() =>
+        User.findOrCreate(
+          { facebookId: profile.id, username: profile.displayName },
+          function (err, user) {
+            return cb(err, user);
+          }
+        )
       );
     }
   )
@@ -110,6 +114,7 @@ app.get(
     scope: ["public_profile"],
   })
 );
+
 app.get(
   "/auth/facebook/secrets",
   passport.authenticate("facebook", { failureRedirect: "/login/flash" }),
